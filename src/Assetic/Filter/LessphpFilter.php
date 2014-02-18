@@ -47,6 +47,11 @@ class LessphpFilter implements DependencyExtractorInterface
     {
         $this->loadPaths[] = $path;
     }
+	
+	public function getLoadPaths()
+	{
+		return $this->loadPaths;
+	}
 
     /**
      * Sets load paths used by lessphp
@@ -89,9 +94,8 @@ class LessphpFilter implements DependencyExtractorInterface
             $lc->importDir = dirname($root.'/'.$path);
         }
 
-        foreach ($this->loadPaths as $loadPath) {
-            $lc->addImportDir($loadPath);
-        }
+        if (count($this->loadPaths))
+			$lc->setImportDir($this->loadPaths);
 
         if ($this->formatter) {
             $lc->setFormatter($this->formatter);
