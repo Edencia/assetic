@@ -48,6 +48,11 @@ class LessphpFilter implements DependencyExtractorInterface
         $this->loadPaths[] = $path;
     }
 
+    public function getLoadPaths()
+    {
+        return $this->loadPaths;
+    }
+
     /**
      * Sets load paths used by lessphp
      *
